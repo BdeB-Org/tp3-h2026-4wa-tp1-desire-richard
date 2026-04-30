@@ -14,7 +14,7 @@
 
         <div id="message"></div>
 
-        <form id="loginForm">
+        <form id="workForm">
             <input type="text" id="titre" placeholder="Titre du travail" required> <br>
             <input type="text" id="description" placeholder="Description du travail" required> <br>
             <input type="file" id="fichier" placeholder="Fichier joint" required> <br>
@@ -25,4 +25,44 @@
     </div>  
     
 </body>
+
+<script>
+   const form = document.getElementById('workForm');
+   const messsageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+         e.preventDefault();
+    
+         const titre = document.getElementById('titre').value;
+         const description = document.getElementById('description').value;
+         const fichier = document.getElementById('fichier').files[0];
+         const date = document.getElementById('date').value;
+         const statu_remise = document.getElementById('statu_remise').checked;
+    
+
+    
+         try {
+              const response = await fetch('/api/auth/travaux', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'},
+                body: JSON.stringify({ titre, description, date, statu_remise })
+              });
+              
+              const data = await response.json();
+
+              if (response.ok) {
+                messsageDiv.textContent = 'Travail créé avec succès!';
+                messsageDiv.style.color = 'green';
+                form.reset();
+              } else {
+                throw new Error('Erreur lors de la création du travail');
+              }
+         } catch (error) {
+              messsageDiv.textContent = error.message;
+              messsageDiv.style.color = 'red';
+         }
+    });
+
+</script>
 </html>
