@@ -56,7 +56,7 @@ exports.pTravail = (req, res) => {
 
             res.json({
                 message: 'Travail ajouté avec succès',
-                token,      
+                token ,      
             });
         }
     );

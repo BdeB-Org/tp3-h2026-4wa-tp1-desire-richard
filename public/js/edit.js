@@ -51,7 +51,7 @@ form.addEventListener('submit', async (e) => {
 
         showMessage(data.message);
         setTimeout(() => {
-            window.location.href = '/liste.html';
+            window.location.href = '/indexTravail.html';
         }, 800);
     } catch (err) {
         showMessage(err.message, true);
