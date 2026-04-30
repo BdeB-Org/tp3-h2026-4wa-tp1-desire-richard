@@ -14,59 +14,20 @@
 
         <div id="message"></div>
 
-        <form id="workForm">
+        <form id="formTravail">
             <input type="text" id="titre" placeholder="Titre du travail" required> <br>
             <input type="text" id="description" placeholder="Description du travail" required> <br>
             <input type="file" id="fichier" placeholder="Fichier joint" required> <br>
-            <input type="date" id="date" placeholder="Date de remise" required> <br>
+            <input type="date" id="echance" placeholder="Date de remise" required> <br>
             <input type="checkbox" id="statu_remise" placeholder="Travail remis" required> <br>
             <button type="submit">Créer le travail</button>
         </form>
     </div>  
     
+    <tbody id="tbodyTravaux"></tbody>
+
+    <script src="js/auth.js"></script>
+    <script src="js/indexTravail.js"></script>
 </body>
 
-<script src="js/auth.js"></script>
-<script>
-   const form = document.getElementById('workForm');
-   const messsageDiv = document.getElementById('message');
-
-    form.addEventListener('submit', async (e) => {
-         e.preventDefault();
-    
-         const titre = document.getElementById('titre').value;
-         const description = document.getElementById('description').value;
-         const fichier = document.getElementById('fichier').files[0];
-         const date = document.getElementById('date').value;
-         const statu_remise = document.getElementById('statu_remise').checked;
-    
-
-    
-         try {
-              const response = await fetch('/api/auth/pTravail', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'},
-                body: JSON.stringify({ titre, description, date, statu_remise })
-              });
-              
-              const data = await response.json();
-
-              if (response.ok) {
-                messsageDiv.textContent = 'Travail créé avec succès!';
-                
-                form.reset();
-              } else {
-                throw new Error('Erreur lors de la création du travail');
-              }
-
-                saveToken(data.token);
-                window.location.href = '/index.html';
-         } catch (error) {
-              message.innerHTML = `<p class="error">${error.message}</p>`;
-             
-         }
-    });
-
-</script>
 </html>
