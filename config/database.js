@@ -23,4 +23,19 @@ db.serialize(() => {
     );
 });
 
+db.serialize(() => {
+    db.run(`
+        CREATE TABLE IF NOT EXISTS travail (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titre TEXT NOT NULL,
+            description TEXT,
+            fichier TEXT,
+            echeance DATE,
+            statut_remise BOOLEAN DEFAULT FALSE
+        )
+    `);
+
+});
+
+
 module.exports = db;

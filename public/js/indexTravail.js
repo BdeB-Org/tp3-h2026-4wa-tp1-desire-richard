@@ -19,7 +19,7 @@ function escapeHtml(value) {
 
 async function loadTravaux() {
     try {
-        const response = await apiFetch('/api/travaux');
+        const response = await apiFetch('/api/travail/');
         const dataTravaux = await response.json();
 
         tbody.innerHTML = '';
@@ -29,8 +29,8 @@ async function loadTravaux() {
                 <td>${escapeHtml(travail.titre)}</td>
                 <td>${escapeHtml(travail.description)}</td>
                 <td>${escapeHtml(travail.fichier)}</td>
-                <td>${escapeHtml(travail.date)}</td>
-                <td>${escapeHtml(travail.statu_remise)}</td>
+                <td>${escapeHtml(travail.echeance)}</td>
+                <td>${escapeHtml(travail.statut_remise)}</td>
             `;
             tbody.appendChild(row);
         });
@@ -45,14 +45,14 @@ form.addEventListener('submit', async (e) => {
     const titre = document.getElementById('titre').value.trim();
     const description = document.getElementById('description').value.trim();
     const fichierInput = document.getElementById('fichier');
-    const echance = document.getElementById('echance').value.trim();
-    const statu_remise = document.getElementById('statu_remise').checked ? 'Remis' : 'Non remis';
+    const echeance = document.getElementById('echeance').value.trim();
+    const statut_remise = document.getElementById('statut_remise').checked ? 'Remis' : 'Non remis';
     const fichier = fichierInput.files[0] ? fichierInput.files[0].name : '';
 
     try {
-        const response = await apiFetch('/api/travaux', {
+        const response = await apiFetch('/api/travail', {
             method: 'POST',
-            body: JSON.stringify({ titre, description, fichier, date: echance, statu_remise })
+            body: JSON.stringify({ titre, description, fichier, echeance, statut_remise })
         });
 
         const data = await response.json();
@@ -74,7 +74,7 @@ async function deleteTravail(id) {
         return;
     }
     try {
-        const response = await apiFetch(`/api/travaux/${id}`, {
+        const response = await apiFetch(`/api/travail/${id}`, {
             method: 'DELETE'
         });
 

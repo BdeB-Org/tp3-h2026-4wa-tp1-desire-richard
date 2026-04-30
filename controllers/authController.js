@@ -34,11 +34,11 @@ exports.login = (req, res) => {
 };
 
 
-exports.pTravail = (req, res) => { 
-    const {titre, description, date, statu_remise} = req.body;
+exports.Travail = (req, res) => { 
+    const {titre, description, fichier, echeance, statut_remise} = req.body;
     db.get(
-        "INSERT INTO travaux (titre, description, date, statu_remise) VALUES (?, ?, ?, ?)",
-        [titre, description, date, statu_remise],
+        "INSERT INTO travail (titre, description, fichier, echeance, statut_remise) VALUES (?, ?, ?, ?, ?)",
+        [titre, description, fichier, echeance, statut_remise],
         (err, user) => {
             if (err) {
                 return res.status(500).json({ message: err.message });

@@ -12,18 +12,19 @@ app.use(express.static('public'));
 
 // VAR : Auteure = Bellandrade Désiré
 const utilisateurRoutes = require("./routes/utilisateurRoutes");
+const travailRoutes = require("./routes/travailRoutes");
 const authRoutes = require('./routes/authRoutes');
-
-
 
 // APP.USE : Auteures = Bellandrade Désiré & Charlotte Richard
 
-// APP.USE : Auteure = Bellandrade Désiré
+// APP.USE : Auteure = Bellandrade Désiré et Charlotte Richard
 app.use('/api/utilisateurs', utilisateurRoutes);
+app.use('/api/travail', travailRoutes);
 app.use('/api/auth', authRoutes);
 
-// VAR : Auteure = Charlotte Richard
-const travailRoutes = require("./routes/travailRoutes");
+
+// VAR : Auteure = 
+
 
 // APP.USE : Auteure = Charlotte Richard
 // app.use('/api/travaux', travailRoutes);
@@ -32,6 +33,11 @@ const travailRoutes = require("./routes/travailRoutes");
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'page_Travail.html'));
+});
+
 
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard
 app.listen(3000, () => {
