@@ -26,6 +26,7 @@
     
 </body>
 
+<script src="js/auth.js"></script>
 <script>
    const form = document.getElementById('workForm');
    const messsageDiv = document.getElementById('message');
@@ -42,7 +43,7 @@
 
     
          try {
-              const response = await fetch('/api/auth/travaux', {
+              const response = await fetch('/api/auth/pTravail', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'},
@@ -53,14 +54,17 @@
 
               if (response.ok) {
                 messsageDiv.textContent = 'Travail créé avec succès!';
-                messsageDiv.style.color = 'green';
+                
                 form.reset();
               } else {
                 throw new Error('Erreur lors de la création du travail');
               }
+
+                saveToken(data.token);
+                window.location.href = '/index.html';
          } catch (error) {
-              messsageDiv.textContent = error.message;
-              messsageDiv.style.color = 'red';
+              message.innerHTML = `<p class="error">${error.message}</p>`;
+             
          }
     });
 
