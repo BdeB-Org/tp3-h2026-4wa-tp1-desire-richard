@@ -1,0 +1,363 @@
+{
+  "info": {
+    "_postman_id": "e45b2303-3ec9-462c-bc41-3f38376291df",
+    "name": "MonApiTravail",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53757209",
+    "_collection_link": "https://go.postman.co/collection/53757209-e45b2303-3ec9-462c-bc41-3f38376291df?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GetTravail",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "GetTravail_ID",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/travail/1/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "travail",
+                "1",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "158"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"9e-xhfMxEcvZIS9RhubWsn4ZuOVr8k\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 09 Apr 2026 22:11:54 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"id_cours\": 1,\n        \"titre\": \"Projet en web 1\",\n        \"description\": \"Faire un site web\",\n        \"fichier\": \"Html, css\",\n        \"echeance\": \"24 février\",\n        \"statut_remise\": \"Non-remis\"\n    }\n]"
+        },
+        {
+          "name": "GetTravail",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": {
+              "raw": "http://localhost:3000/travail/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "travail",
+                "7"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "2"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 09 Apr 2026 22:15:01 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[]"
+        }
+      ]
+    },
+    {
+      "name": "PostTravail",
+      "request": {
+        "method": "POST",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "PostTravail",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\" : \"7\",\r\n    \"id_cours\": \"1\",\r\n    \"titre\": \"TP1\",\r\n    \"description\" : \"Remise du projet fait\",\r\n    \"fichier\" : \"html, css\",\r\n    \"echeance\" : \"9 avril 2026\", \r\n    \"statut_remise\" : \"remise\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/travail",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "travail"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "36"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"24-HWVrujvp6SS+Ls7a0P9wmjTqi5c\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 09 Apr 2026 22:23:09 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Travail ajouté\",\n    \"id\": 7\n}"
+        }
+      ]
+    },
+    {
+      "name": "PutTravail",
+      "request": {
+        "method": "PUT",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "PutTravail",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\" : \"7\",\r\n    \"id_cours\" : \"1\",\r\n    \"titre\" : \"Projet en web\",\r\n    \"description\" : \"Faire un site web pour un cafe de chat\",\r\n    \"fichier\" : \"html, css, javascript\",\r\n    \"echeance\" : \"9 avril 2026\",\r\n    \"statut_remise\" : \"remise\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/travail/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "travail",
+                "7"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2a-ONMO6SgJw9NomrC94OjF9K0MO3I\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 09 Apr 2026 22:37:32 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Travail mis à jour\",\n    \"id\": \"7\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "DeleteTravail",
+      "request": {
+        "method": "DELETE",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "DeleteTravail",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/travail/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "travail",
+                "7"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "40"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"28-jDQsotbGmlD3/je/AMJLDYRmgpM\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 09 Apr 2026 22:38:02 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Travail supprimé\",\n    \"id\": \"7\"\n}"
+        }
+      ]
+    }
+  ]
+}
