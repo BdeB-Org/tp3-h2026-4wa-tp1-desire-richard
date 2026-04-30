@@ -12,10 +12,6 @@ const db = new sqlite3.Database('./database.db', (err) => {
 db.serialize(() => {
     db.run(`
         CREATE TABLE IF NOT EXISTS utilisateur (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            type_utilisateur TEXT,
-            prenom TEXT,
-            nom TEXT,
             courriel TEXT UNIQUE,
             mot_de_passe TEXT
         )
@@ -23,7 +19,7 @@ db.serialize(() => {
 
     db.run(
         "INSERT OR IGNORE INTO utilisateur (courriel, mot_de_passe) VALUES (?, ?)",
-        ['belldesire@bdeb.qc.ca', 'admin']
+        ['belldesire', 'admin']
     );
 });
 

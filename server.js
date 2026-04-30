@@ -27,7 +27,7 @@ app.use("/", travailRoutes);
 
 // APP.GET : Auteure = Bellandrade Désiré
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'page_connexion.html'));
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard

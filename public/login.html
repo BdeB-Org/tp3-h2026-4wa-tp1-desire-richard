@@ -15,7 +15,7 @@
         <div id="message"></div>
 
         <form id="loginForm">
-            <input type="email" id="courriel" placeholder="Courriel" required>
+            <input type="text" id="courriel" placeholder="Courriel" required>
             <input type="password" id="mot_de_passe" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>
         </form>
@@ -34,7 +34,7 @@
             const mot_de_passe = document.getElementById('mot_de_passe').value.trim();
 
             try {
-                const res = await fetch('/api/auth/page_connexion', {
+                const res = await fetch('/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ courriel, mot_de_passe })
