@@ -5,6 +5,10 @@ const path = require('path');
 
 // VAR APP : Auteures = Bellandrade Désiré & Charlotte Richard
 const app = express();
+require('./config/database');
+
+app.use(express.json());
+app.use(express.static('public'));
 
 // VAR : Auteure = Bellandrade Désiré
 const utilisateurRoutes = require("./routes/utilisateurRoutes");
@@ -13,17 +17,16 @@ const authRoutes = require('./routes/authRoutes');
 
 
 // APP.USE : Auteures = Bellandrade Désiré & Charlotte Richard
-app.use(express.json());
 
 // APP.USE : Auteure = Bellandrade Désiré
-app.use("/", utilisateurRoutes);
+app.use('/api/utilisateurs', utilisateurRoutes);
 app.use('/api/auth', authRoutes);
 
 // VAR : Auteure = Charlotte Richard
 const travailRoutes = require("./routes/travailRoutes");
 
 // APP.USE : Auteure = Charlotte Richard
-app.use("/", travailRoutes);
+// app.use('/api/travaux', travailRoutes);
 
 // APP.GET : Auteure = Bellandrade Désiré
 app.get('/', (req, res) => {
