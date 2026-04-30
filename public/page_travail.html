@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container" style="max-width: 500px;">
+        <h1>Création de travail</h1>
+        <p class="small">Création de travail</p>
+
+        <div id="message"></div>
+
+        <form id="loginForm">
+            <input type="text" id="titre" placeholder="Titre du travail" required> <br>
+            <input type="text" id="description" placeholder="Description du travail" required> <br>
+            <input type="file" id="fichier" placeholder="Fichier joint" required> <br>
+            <input type="date" id="date" placeholder="Date de remise" required> <br>
+            <input type="checkbox" id="statu_remise" placeholder="Travail remis" required> <br>
+            <button type="submit">Créer le travail</button>
+        </form>
+    </div>  
     
 </body>
 </html>
