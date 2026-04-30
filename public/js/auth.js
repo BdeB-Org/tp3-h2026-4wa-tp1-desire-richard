@@ -10,13 +10,13 @@ function getToken() {
 
 function logout() {
     localStorage.removeItem('token');
-    window.location.href = '/page_connexion.html';
+    window.location.href = '/login.html';
 }
 
 function requireAuth() {
     const token = getToken();
     if (!token) {
-        window.location.href = '/page_connexion.html';
+        window.location.href = '/login.html';
     }
 }
 
