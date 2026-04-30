@@ -27,6 +27,7 @@ async function chargerEtudiants() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${utilisateur.id}</td>
+                <td>${escapeHtml(utilisateur.type_utilisateur)}</td>
                 <td>${escapeHtml(utilisateur.prenom)}</td>
                 <td>${escapeHtml(utilisateur.nom)}</td>
                 <td>${escapeHtml(utilisateur.courriel)}</td>
