@@ -17,22 +17,22 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerUtilisateurs() {
     try {
-        const res = await apiFetch('/api/etudiants');
+        const res = await apiFetch('/api/utilisateur');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(etudiant => {
+        data.forEach(utilisateur => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${utilisateur.id}</td>
+                <td>${escapeHtml(utilisateur.nom)}</td>
+                <td>${escapeHtml(utilisateur.programme)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
+                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,13 +45,16 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const type_utilisateur = document.getElementById('type_utilisateur').value.trim();
+    const prenom = document.getElementById('prenom').value.trim();
     const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const courriel = document.getElementById('courriel').value.trim();
+    const mot_de_passe = document.getElementById('mot_de_passe').value.trim();
 
     try {
-        const res = await apiFetch('/api/etudiants', {
+        const res = await apiFetch('/api/utilisateur', {
             method: 'POST',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ type_utilisateur, prenom, nom, courriel, mot_de_passe })
         });
 
         const data = await res.json();
@@ -61,7 +64,7 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        showMessage('Étudiant ajouté avec succès');
+        showMessage('Utilisateur ajouté avec succès');
         chargerEtudiants();
     } catch (err) {
         showMessage(err.message, true);
@@ -69,10 +72,10 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function supprimerEtudiant(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+    if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, {
+        const res = await apiFetch('/api/utilisateur/' + id, {
             method: 'DELETE'
         });
 
@@ -83,10 +86,10 @@ async function supprimerEtudiant(id) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerUtilisateurs();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerUtilisateurs();
