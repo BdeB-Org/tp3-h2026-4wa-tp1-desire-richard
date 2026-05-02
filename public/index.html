@@ -25,11 +25,17 @@
 
         <h2>Ajouter un utilisateur</h2>
         <form id="formAjout">
-            <input type="text" id="type_utilisateur" placeholder="Type d'utilisateur" required>
+            <!-- <input type="text" id="type_utilisateur" placeholder="Type d'utilisateur" required> -->
+            <select name="user-type" id="user-select" required>
+                <option value="">Veuillez choisir une option</option>
+                <option value="admin">Administrateur</option>
+                <option value="enseignant">Enseignant(e)</option>
+                <option value="etudiant">Étudiant(e)</option>
+            </select>
             <input type="text" id="prenom" placeholder="Prénom" required>
             <input type="text" id="nom" placeholder="Nom" required>
-            <input type="text" id="courriel" placeholder="Courriel" required>
-            <input type="text" id="mot_de_passe" placeholder="Mot de passe" required>
+            <input type="email" id="courriel" placeholder="Courriel" required>
+            <input type="password" id="mot_de_passe" placeholder="Mot de passe" required>
             <button type="submit">Ajouter</button>
         </form>
 
@@ -38,6 +44,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Type d'utilisateur</th>
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Courriel</th>
