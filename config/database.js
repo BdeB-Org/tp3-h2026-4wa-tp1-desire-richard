@@ -21,12 +21,10 @@ db.serialize(() => {
         "INSERT OR IGNORE INTO utilisateur (courriel, mot_de_passe) VALUES (?, ?)",
         ['belldesire', 'admin']
     );
-});
-
-db.serialize(() => {
     db.run(`
         CREATE TABLE IF NOT EXISTS travail (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_cours INTEGER NOT NULL,
             titre TEXT NOT NULL,
             description TEXT,
             fichier TEXT,
@@ -35,7 +33,11 @@ db.serialize(() => {
         )
     `);
 
+
 });
+
+    
+
 
 
 module.exports = db;

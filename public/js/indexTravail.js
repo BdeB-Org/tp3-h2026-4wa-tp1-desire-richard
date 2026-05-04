@@ -4,7 +4,7 @@ const form = document.getElementById('formTravail');
 const tbody = document.getElementById('tbodyTravaux');
 const message = document.getElementById('message');
 
-function displayMessage(text, isError = false) {
+function showMessage(text, isError = false) {
     message.innerHTML = `<div class="${isError ? 'error' : ''}">${text}</div>`;
 }
 
@@ -28,14 +28,14 @@ async function chargerTravail() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${travail.id}</td>
-                <td>${travail.id_cours}</td>
+                <td>${escapeHtml(travail.id_cours)}</td>
                 <td>${escapeHtml(travail.titre)}</td>
                 <td>${escapeHtml(travail.description)}</td>
                 <td>${escapeHtml(travail.fichier)}</td>
                 <td>${escapeHtml(travail.echeance)}</td>
                 <td>${escapeHtml(travail.statut_remise)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${travail.id}">Modifier</a>
+                    <a class="btn-link" href="/editTravail.html?id=${travail.id}">Modifier</a>
                     <button class="danger" onclick="supprimerTravail(${travail.id})">Supprimer</button>
                 </td>
             
@@ -71,7 +71,7 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        displayMessage("Travail créé avec succès !");
+        showMessage("Travail créé avec succès !");
         chargerTravail();
     } catch (error) {
         showMessage(err.message, true);
@@ -94,10 +94,10 @@ async function deleteTravail(id) {
             throw new Error(data.message || 'Erreur lors de la suppression du travail.');
         }
 
-        displayMessage("Travail supprimé avec succès !");
+        showMessage("Travail supprimé avec succès !");
         chargerTravail();
     } catch (error) {
-        displayMessage(error.message, true);
+        showMessage(error.message, true);
     }
 }
 
