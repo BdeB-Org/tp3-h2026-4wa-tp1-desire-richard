@@ -27,41 +27,8 @@
     <tbody id="tbodyTravaux"></tbody>
 
     <script src="js/auth.js"></script>
-    <script>
-        const form = document.getElementById('formTravail');
-        const message = document.getElementById('message');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            message.innerHTML = '';
-
-            const titre = document.getElementById('titre').value.trim();
-            const description = document.getElementById('description').value.trim();
-            const fichier = document.getElementById('fichier').files[0];
-            const echeance = document.getElementById('echeance').value.trim();
-            const statut_remise = document.getElementById('statut_remise').checked;
-
-            try {
-
-                const res = await fetch('/api/travail', {
-                    method: 'POST',
-                    headers: { 'Authorization': 'Bearer ' + getToken() },
-                    body: JSON.stringify({titre, description, fichier, echeance, statut_remise })
-                });
-
-                const data = await res.json();
-
-                if (!res.ok) {
-                    throw new Error(data.message || 'Erreur lors de la création du travail');
-                }
-
-                saveToken(data.token);
-                window.location.href = '/indexTravail.html';
-            } catch (err) {
-                message.innerHTML = '<div class="message error">' + err.message + '</div>';
-            }
-        });
-    </script>
+    <script src="js/indexTravail.js"></script>
+   
 </body>
 
 </html>
