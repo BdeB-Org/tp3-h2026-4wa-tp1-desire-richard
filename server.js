@@ -34,9 +34,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'page_Travail.html'));
-});
+
 
 
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard

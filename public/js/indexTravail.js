@@ -17,31 +17,40 @@ function escapeHtml(value) {
         .replaceAll("'", '&#39;');
 }
 
-async function loadTravaux() {
+async function chargerTravail() {
     try {
-        const response = await apiFetch('/api/travail/');
-        const dataTravaux = await response.json();
+        const res = await apiFetch('/api/travail');
+        const data = await res.json();
 
         tbody.innerHTML = '';
-        dataTravaux.forEach(travail => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
+
+        data.forEach(travail => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${travail.id}</td>
+                <td>${travail.id_cours}</td>
                 <td>${escapeHtml(travail.titre)}</td>
                 <td>${escapeHtml(travail.description)}</td>
                 <td>${escapeHtml(travail.fichier)}</td>
                 <td>${escapeHtml(travail.echeance)}</td>
                 <td>${escapeHtml(travail.statut_remise)}</td>
-            `;
-            tbody.appendChild(row);
+                <td>
+                    <a class="btn-link" href="/edit.html?id=${travail.id}">Modifier</a>
+                    <button class="danger" onclick="supprimerTravail(${travail.id})">Supprimer</button>
+                </td>
+            
+                `;
+            tbody.appendChild(tr);
         });
-    } catch (error) {
-        displayMessage('Erreur lors du chargement des travaux.', true);
+    } catch (err) {
+        showMessage(err.message, true)
     }
 }
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const id_cours = document.getElementById('id_cours').value.trim();
     const titre = document.getElementById('titre').value.trim();
     const description = document.getElementById('description').value.trim();
     const fichierInput = document.getElementById('fichier');
@@ -52,7 +61,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const response = await apiFetch('/api/travail', {
             method: 'POST',
-            body: JSON.stringify({ titre, description, fichier, echeance, statut_remise })
+            body: JSON.stringify({id_cours, titre, description, fichier, echeance, statut_remise })
         });
 
         const data = await response.json();
@@ -63,9 +72,9 @@ form.addEventListener('submit', async (e) => {
 
         form.reset();
         displayMessage("Travail créé avec succès !");
-        loadTravaux();
+        chargerTravail();
     } catch (error) {
-        displayMessage(error.message, true);
+        showMessage(err.message, true);
     }
 });
 
@@ -74,7 +83,7 @@ async function deleteTravail(id) {
         return;
     }
     try {
-        const response = await apiFetch(`/api/travail/${id}`, {
+        const response = await apiFetch('/api/travail/' + id, {
             method: 'DELETE'
         });
 
@@ -86,10 +95,10 @@ async function deleteTravail(id) {
         }
 
         displayMessage("Travail supprimé avec succès !");
-        loadTravaux();
+        chargerTravail();
     } catch (error) {
         displayMessage(error.message, true);
     }
 }
 
-loadTravaux();
+chargerTravail();

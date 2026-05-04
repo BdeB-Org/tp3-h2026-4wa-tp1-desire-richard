@@ -8,13 +8,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container" style="max-width: 500px;">
-        <h1>Création de travail</h1>
-        <p class="small">Création de travail</p>
-
+<div class="container">
+    <div class="topbar">
+        <h1>Section Travail</h1>
+        <p class="small">Ajout et affichage dans un tableau</p>
+    </div>
+    <div class="actions">
+        <a href="/liste.html" class="btn-link">Voir la liste complète</a>
+        <button class="secondary" onclick="logout()">Déconnexion</button>
+    </div>
         <div id="message"></div>
 
+        <h2>Ajouter un travail</h2>
         <form id="formTravail">
+            <input type="number" id="id_cours" placeholder="ID du cours" required> <br>
             <input type="text" id="titre" placeholder="Titre du travail" required> <br>
             <input type="text" id="description" placeholder="Description du travail" required> <br>
             <input type="file" id="fichier" placeholder="Fichier joint" required> <br>
@@ -23,6 +30,21 @@
             <button type="submit">Créer le travail</button>
         </form>
     </div>  
+
+    <h2>Ensemble des travaux</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID_Cours</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Fichier</th>
+                <th>Echeance</th>
+                <th>Statut Remise</th>
+            </tr>
+        </thead>
+    </table>
     
     <tbody id="tbodyTravaux"></tbody>
 
