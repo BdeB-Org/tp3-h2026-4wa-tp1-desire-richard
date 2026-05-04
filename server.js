@@ -34,12 +34,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d9955d (Modification de lignes de code (erreur 404))
-
-
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard
 app.listen(3000, () => {
     console.log("Serveur lancé sur http://localhost:3000");
