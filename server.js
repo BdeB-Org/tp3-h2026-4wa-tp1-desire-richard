@@ -18,7 +18,7 @@ const authRoutes = require('./routes/authRoutes');
 // APP.USE : Auteures = Bellandrade Désiré & Charlotte Richard
 
 // APP.USE : Auteure = Bellandrade Désiré et Charlotte Richard
-app.use('/api/utilisateurs', utilisateurRoutes);
+app.use('/api/utilisateur', utilisateurRoutes);
 app.use('/api/travail', travailRoutes);
 app.use('/api/auth', authRoutes);
 
@@ -34,7 +34,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d9955d (Modification de lignes de code (erreur 404))
 
 
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard

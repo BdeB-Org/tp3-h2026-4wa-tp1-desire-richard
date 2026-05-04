@@ -28,8 +28,11 @@ async function chargerUtilisateurs() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${utilisateur.id}</td>
+                <td>${escapeHtml(utilisateur.type_utilisateur)}</td>
+                <td>${escapeHtml(utilisateur.prenom)}</td>
                 <td>${escapeHtml(utilisateur.nom)}</td>
-                <td>${escapeHtml(utilisateur.programme)}</td>
+                <td>${escapeHtml(utilisateur.courriel)}</td>
+                <td>${escapeHtml(utilisateur.mot_de_passe)}</td>
                 <td>
                     <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
                     <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
@@ -45,7 +48,7 @@ async function chargerUtilisateurs() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const type_utilisateur = document.getElementById('type_utilisateur').value.trim();
+    const type_utilisateur = document.getElementById('type_utilisateur');
     const prenom = document.getElementById('prenom').value.trim();
     const nom = document.getElementById('nom').value.trim();
     const courriel = document.getElementById('courriel').value.trim();
@@ -60,7 +63,7 @@ form.addEventListener('submit', async (e) => {
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.message || 'Erreur lors de l\'ajout');
+            throw new Error(data.message || 'Erreur lors de l\'ajout de l\'utilisateur');
         }
 
         form.reset();
