@@ -1,3 +1,5 @@
+// Auteure = Bellandrade Désiré
+
 requireAuth();
 
 const tbody = document.getElementById('tbodyListe');
@@ -16,7 +18,7 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerUtilisateurs() {
     try {
         const res = await apiFetch('/api/utilisateur');
         const data = await res.json();
@@ -45,7 +47,7 @@ async function chargerEtudiants() {
 }
 
 async function supprimerUtilisateur(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+    if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
 
     try {
         const res = await apiFetch('/api/utilisateur/' + id, { method: 'DELETE' });

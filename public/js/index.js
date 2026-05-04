@@ -1,3 +1,5 @@
+// Auteure = Bellandrade Désiré
+
 requireAuth();
 
 const form = document.getElementById('formAjout');
@@ -25,6 +27,7 @@ async function chargerUtilisateurs() {
         tbody.innerHTML = '';
 
         data.forEach(utilisateur => {
+            console.log(utilisateur + data);
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${utilisateur.id}</td>
@@ -48,7 +51,7 @@ async function chargerUtilisateurs() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const type_utilisateur = document.getElementById('type_utilisateur');
+    const type_utilisateur = document.getElementById('type_utilisateur').value.trim();
     const prenom = document.getElementById('prenom').value.trim();
     const nom = document.getElementById('nom').value.trim();
     const courriel = document.getElementById('courriel').value.trim();
@@ -68,13 +71,13 @@ form.addEventListener('submit', async (e) => {
 
         form.reset();
         showMessage('Utilisateur ajouté avec succès');
-        chargerEtudiants();
+        chargerUtilisateurs();
     } catch (err) {
         showMessage(err.message, true);
     }
 });
 
-async function supprimerEtudiant(id) {
+async function supprimerUtilisateur(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
 
     try {
