@@ -71,7 +71,7 @@ exports.updateTravail = (req, res) => {
 // Opération DELETE
 exports.deleteTravail = (req, res) => {
     
-    if (!id) {
+    if (!req.params.id) {
         return res.status(400).json({ message: "ID manquant" });
     }
     db.run('DELETE FROM travail WHERE id = ?', [req.params.id], 
@@ -81,7 +81,7 @@ exports.deleteTravail = (req, res) => {
             
             res.json({ 
                 message: "Travail supprimé", 
-                id: id
+                id: req.params.id
             });
     });
 };

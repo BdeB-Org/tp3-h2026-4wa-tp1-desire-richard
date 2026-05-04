@@ -18,7 +18,7 @@ function escapeHtml(value) {
 
 async function chargerTravail() {
     try {
-        const res = await apiFetch('/api/Travail');
+        const res = await apiFetch('/api/travail');
         const data = await res.json();
 
         tbody.innerHTML = '';
@@ -27,14 +27,14 @@ async function chargerTravail() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${travail.id}</td>
-                <td>${travail.id_cours}</td>
+                <td>${escapeHtml(travail.id_cours)}</td>
                 <td>${escapeHtml(travail.titre)}</td>
                 <td>${escapeHtml(travail.description)}</td>
                 <td>${escapeHtml(travail.fichier)}</td>
                 <td>${escapeHtml(travail.echeance)}</td>
                 <td>${escapeHtml(travail.statut_remise)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${travail.id}">Modifier</a>
+                    <a class="btn-link" href="/editTravail.html?id=${travail.id}">Modifier</a>
                     <button class="danger" onclick="supprimerTravail(${travail.id})">Supprimer</button>
                 </td>
             `;

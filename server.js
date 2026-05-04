@@ -34,6 +34,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> e3ab6134e0782f68d8dd0ea4fcf207e652b17e28
 // APP.LISTEN : Auteures = Bellandrade Désiré & Charlotte Richard
 app.listen(3000, () => {
     console.log("Serveur lancé sur http://localhost:3000");
