@@ -48,7 +48,6 @@ exports.getUtilisateurID = (req, res)=>{
     db.all('SELECT * FROM utilisateur WHERE id = ?', [id], (err, rows)=>{
         if(err){
                 return res.status(500).json({ message: err.message });
-                
             }
         if (!rows) return res.status(404).json({ message: 'Utilisateur non trouvé' });
         
@@ -77,7 +76,7 @@ exports.updateUtilisateur = (req, res) => {
             if (this.changes === 0) return res.status(404).json({ message: 'Utilisateur non trouvé' });
             res.json({
                 message: "Utilisateur modifié avec succès",
-                id: id
+                id: this.lastID
             });
         }
     );

@@ -27,7 +27,6 @@ async function chargerUtilisateurs() {
         tbody.innerHTML = '';
 
         data.forEach(utilisateur => {
-            console.log(utilisateur + data);
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${utilisateur.id}</td>
