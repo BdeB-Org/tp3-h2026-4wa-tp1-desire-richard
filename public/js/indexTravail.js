@@ -1,13 +1,17 @@
+//Auteur: Charlotte Richard
+
 requireAuth();
 
 const form = document.getElementById('formTravail');
 const tbody = document.getElementById('tbodyTravaux');
 const message = document.getElementById('message');
 
+// Fonction pour afficher les messages à l'utilisateur
 function showMessage(text, isError = false) {
     message.innerHTML = `<div class="${isError ? 'error' : ''}">${text}</div>`;
 }
 
+// Fonction pour échapper les caractères spéciaux dans les données affichées
 function escapeHtml(value) {
     return String(value)
         .replaceAll('&', '&amp;')
@@ -17,6 +21,7 @@ function escapeHtml(value) {
         .replaceAll("'", '&#39;');
 }
 
+// Opération pour charger tous les travaux
 async function chargerTravail() {
     try {
         const res = await apiFetch('/api/travail');
@@ -47,6 +52,7 @@ async function chargerTravail() {
     }
 }
 
+//Opération pour ajouter un travail
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -78,6 +84,7 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
+// Opération pour supprimer un travail
 async function deleteTravail(id) {
     if (!confirm('Êtes-vous sûr de vouloir supprimer ce travail ?')) {
         return;

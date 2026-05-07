@@ -41,7 +41,7 @@ exports.addTravail = (req, res) => {
             
             res.json({ 
                 message: "Travail ajouté", 
-                id: this.lastID 
+                id: this.lastID,
             });
     });
 };
@@ -63,7 +63,7 @@ exports.updateTravail = (req, res) => {
             if (this.changes === 0) return res.status(404).json({message: "Travail non trouvé"});
             res.json({ 
                 message: "Travail mis à jour", 
-                id: id 
+                
             });
     });
 };
@@ -81,7 +81,8 @@ exports.deleteTravail = (req, res) => {
             
             res.json({ 
                 message: "Travail supprimé", 
-                id: req.params.id
+                
             });
     });
 };
+

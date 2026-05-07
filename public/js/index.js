@@ -6,6 +6,7 @@ const form = document.getElementById('formAjout');
 const tbody = document.getElementById('tbodyEtudiants');
 const message = document.getElementById('message');
 
+
 function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }

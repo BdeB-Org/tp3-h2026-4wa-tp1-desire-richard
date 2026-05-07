@@ -1,3 +1,5 @@
+//Auteur: Charlotte Richard
+
 requireAuth();
 
 const form = document.getElementById('formEdit');
@@ -5,10 +7,12 @@ const message = document.getElementById('message');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+// Fonction pour afficher les messages à l'utilisateur
 function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
+// Opération pour charger les détails d'un travail pour les modifier
 async function chargerTravail() {
     try {
         const res = await apiFetch('/api/travail/' + id);
@@ -21,7 +25,7 @@ async function chargerTravail() {
         document.getElementById('id_cours').value = data.id_cours;
         document.getElementById('titre').value = data.titre;
         document.getElementById('description').value = data.description;
-        document.getElementById('fichier').value = data.fichier;
+        document.getElementById('fichier').value = "";
         document.getElementById('echeance').value = data.echeance;
         document.getElementById('statut_remise').value = data.statut_remise;
 
@@ -30,6 +34,7 @@ async function chargerTravail() {
     }
 }
 
+// Opération pour soumettre les modifications d'un travail
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 

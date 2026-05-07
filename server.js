@@ -23,11 +23,6 @@ app.use('/api/travail', travailRoutes);
 app.use('/api/auth', authRoutes);
 
 
-// VAR : Auteure = 
-
-
-// APP.USE : Auteure = Charlotte Richard
-// app.use('/api/travaux', travailRoutes);
 
 // APP.GET : Auteure = Bellandrade Désiré
 app.get('/', (req, res) => {

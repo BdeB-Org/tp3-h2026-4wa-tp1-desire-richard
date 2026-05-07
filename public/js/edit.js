@@ -88,7 +88,7 @@ form.addEventListener('submit', async (e) => {
 
         showMessage(data.message);
         setTimeout(() => {
-            window.location.href = '/indexTravail.html';
+            window.location.href = '/login.html';
         }, 800);
     } catch (err) {
         showMessage(err.message, true);
