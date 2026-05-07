@@ -21,6 +21,8 @@ db.serialize(() => {
         "INSERT OR IGNORE INTO utilisateur (courriel, mot_de_passe) VALUES (?, ?)",
         ['belldesire', 'admin']
     );
+    // Auteure = Charlotte Richard
+    // Création de la table travail si elle n'existe pas déjà
     db.run(`
         CREATE TABLE IF NOT EXISTS travail (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

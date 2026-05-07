@@ -10,11 +10,12 @@
 <body>
 <div class="container">
     <div class="topbar">
-        <h1>Section Travail</h1>
-        <p class="small">Ajout et affichage dans un tableau</p>
+        <h1>Ajout de travail </h1>
+        
     </div>
     <div class="actions">
         <a href="/listeTravail.html" class="btn-link">Voir la liste complète</a>
+        <a href="/index.html" class="btn-link">Retour à l'ajout d'un étudiant</a>
         <button class="secondary" onclick="logout()">Déconnexion</button>
     </div>
         <div id="message"></div>
@@ -25,8 +26,16 @@
             <input type="text" id="titre" placeholder="Titre du travail" required> <br>
             <input type="text" id="description" placeholder="Description du travail" required> <br>
             <input type="file" id="fichier" placeholder="Fichier joint" required> <br>
-            <input type="date" id="echeance" placeholder="Date de remise" required> <br>
-            <input type="checkbox" id="statut_remise" placeholder="Travail remis" > <br>
+
+            <div class="container-dateRemis">
+                <p>Date de remise:</p>
+                <input type="date" id="echeance" placeholder="Date de remise" required> 
+            </div>  <br>
+            <div class="container-checkbox"> 
+                <p>Travail remis:</p> 
+                <input type="checkbox" id="statut_remise" placeholder="Travail remis" > 
+            </div> 
+            <br>
             <button type="submit">Créer le travail</button>
         </form>
     </div>  
@@ -39,5 +48,6 @@
     <script src="js/indexTravail.js"></script>
    
 </body>
+<!-- Auteur: Charlotte Richard -->
 
 </html>
