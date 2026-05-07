@@ -9,25 +9,25 @@ exports.login = (req, res) => {
     db.get(
         "SELECT * FROM utilisateur WHERE courriel = ? AND mot_de_passe = ?",
         [courriel, mot_de_passe],
-        (err, utilisateur) => {
+        (err, user) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
 
-            if (!utilisateur) {
+            if (!user) {
                 return res.status(401).json({ message: 'Courriel ou mot de passe invalide' });
             }
 
             const token = jwt.sign(
-                { id: utilisateur.id, courriel: utilisateur.courriel },
+                { id: user.id, courriel: user.courriel },
                 'secretkey',
                 { expiresIn: '2h' }
             );
 
             res.json({
                 message: 'Connexion réussie',
-                token : token,
-                courriel: utilisateur.courriel
+                token,
+                courriel: user.courriel
             });
         }
     );

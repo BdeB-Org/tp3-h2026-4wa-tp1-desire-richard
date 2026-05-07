@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Auteure = Bellandrade Désiré -->
     <div class="container" style="max-width: 700px;">
         <div class="topbar">
             <div>
@@ -21,8 +22,16 @@
         <div id="message"></div>
 
         <form id="formEdit">
+            <select name="user-type" id="type_utilisateur" required>
+                <option value="">Veuillez choisir une option</option>
+                <option value="admin">Administrateur</option>
+                <option value="enseignant">Enseignant(e)</option>
+                <option value="etudiant">Étudiant(e)</option>
+            </select>
+            <input type="text" id="prenom" placeholder="Prénom" required>
             <input type="text" id="nom" placeholder="Nom" required>
-            <input type="text" id="programme" placeholder="Programme" required>
+            <input type="email" id="courriel" placeholder="Courriel" required>
+            <input type="password" id="mot_de_passe" required>
             <button type="submit">Enregistrer les modifications</button>
         </form>
     </div>

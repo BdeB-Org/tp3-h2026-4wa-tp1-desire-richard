@@ -16,7 +16,8 @@ exports.addUtilisateur = (req,res)=>{
         return res.status(400).json({ message: 'Les champs vides sont obligatoires' });
     }
         db.run(
-            "INSERT INTO utilisateur (type_utilisateur, prenom, nom, courriel, mot_de_passe) VALUES (?,?,?,?,?)", [type_utilisateur, prenom, nom, courriel, mot_de_passe],
+            "INSERT INTO utilisateur (type_utilisateur, prenom, nom, courriel, mot_de_passe) VALUES (?,?,?,?,?)", 
+            [type_utilisateur, prenom, nom, courriel, mot_de_passe],
             function(err){
                 if(err){
                     console.log(err);
@@ -35,7 +36,7 @@ exports.addUtilisateur = (req,res)=>{
 // Opération : create -> select -> get
 // Auteure = Bellandrade Désiré
 exports.getUtilisateur = (req,res)=>{
-    db.all('SELECT * FROM utilisateur BY id DESC', [],(err,rows)=>{
+    db.all('SELECT * FROM utilisateur ORDER BY id DESC', [],(err,rows)=>{
         if (err) return res.status(500).json({ message: err.message });
         res.json(rows);
     });
