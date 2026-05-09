@@ -21,11 +21,13 @@ async function chargerUtilisateur() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('type_utilisateur').value = data.type_utilisateur;
-        document.getElementById('prenom').value = data.prenom;
-        document.getElementById('nom').value = data.nom;
-        document.getElementById('courriel').value = data.courriel;
-        document.getElementById('mot_de_passe').value = data.mot_de_passe;
+        const utilisateur = data[0];
+
+        document.getElementById('type_utilisateur').value = utilisateur.type_utilisateur;
+        document.getElementById('prenom').value = utilisateur.prenom;
+        document.getElementById('nom').value = utilisateur.nom;
+        document.getElementById('courriel').value = utilisateur.courriel;
+        document.getElementById('mot_de_passe').value = utilisateur.mot_de_passe;
     } catch (err) {
         showMessage(err.message, true);
     }
