@@ -67,35 +67,35 @@ form.addEventListener('submit', async (e) => {
 
 // Auteure : Charlotte Richard
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// form.addEventListener('submit', async (e) => {
+//     e.preventDefault();
 
-    const type_utilisateur = document.getElementById('type_utilisateur').value.trim();
-    const prenom = document.getElementById('prenom').value.trim();
-    const nom = document.getElementById('nom').value.trim();
-    const courriel = document.getElementById('courriel').value.trim();
-    const mot_de_passe = document.getElementById('mot_de_passe').value.trim();
+//     const type_utilisateur = document.getElementById('type_utilisateur').value.trim();
+//     const prenom = document.getElementById('prenom').value.trim();
+//     const nom = document.getElementById('nom').value.trim();
+//     const courriel = document.getElementById('courriel').value.trim();
+//     const mot_de_passe = document.getElementById('mot_de_passe').value.trim();
 
-    try {
-        const res = await apiFetch('/api/utilisateur/' + id, {
-            method: 'PUT',
-            body: JSON.stringify({ type_utilisateur, prenom, nom, courriel, mot_de_passe })
-        });
+//     try {
+//         const res = await apiFetch('/api/utilisateur/' + id, {
+//             method: 'PUT',
+//             body: JSON.stringify({ type_utilisateur, prenom, nom, courriel, mot_de_passe })
+//         });
 
-        const data = await res.json();
+//         const data = await res.json();
 
-        if (!res.ok) {
-            throw new Error(data.message || 'Erreur lors de la modification');
-        }
+//         if (!res.ok) {
+//             throw new Error(data.message || 'Erreur lors de la modification');
+//         }
 
-        showMessage(data.message);
-        setTimeout(() => {
-            window.location.href = '/login.html';
-        }, 800);
-    } catch (err) {
-        showMessage(err.message, true);
-    }
-});
+//         showMessage(data.message);
+//         setTimeout(() => {
+//             window.location.href = '/liste.html';
+//         }, 800);
+//     } catch (err) {
+//         showMessage(err.message, true);
+//     }
+// });
 
 // Auteure = Bellandrade Désiré
 
